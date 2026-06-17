@@ -25,11 +25,11 @@
 // The StudentBadge component below is hardcoded — it always shows the same text.
 // we will update this soon.
 
-function StudentBadge() {
+function StudentBadge(props) {
   return (
     <div>
-      <h3>Student Name</h3>
-      <p>Grade: 0</p>
+      <h3>{props.name}</h3>
+      <p>Grade: {props.grade}</p>
     </div>
   )
 }
@@ -55,7 +55,14 @@ function SectionA() {
   // Create a new component called TeacherCard from scratch.
   // It should accept props and display a teacher's name and the subject they teach.
   // Render it once below your badges with real values passed in.
-  //
+  function TeacherCard(props){
+    return(
+      <div>
+        <h3>Mr/Ms/Mrs. {props.name}</h3>
+        <p>{props.subject}</p>
+      </div>
+    )
+  }
   // This shows that props work the same way on any component you build.
   //
   // EXPLAIN: What are props?
@@ -67,11 +74,13 @@ function SectionA() {
   return (
     <div>
       <h2>Section A — Props</h2>
-      <StudentBadge />
+      <StudentBadge name={"Mathew"} grade={100}/>
       {/* A1 + A2: Render two more StudentBadge components here */}
-
+      <StudentBadge name={"Stewie"} grade={99}/>
+      <StudentBadge name={"Davy"} grade={98}
+      />
       {/* A3: Render your TeacherCard here */}
-
+      <TeacherCard name={"Regina"} subject={"Math"}/>
     </div>
   )
 }
@@ -95,11 +104,32 @@ function SectionA() {
 // If isActive is true, display the text "Active".
 // If isActive is false, display the text "Inactive".
 
+//Failed attempt 
+// const roster = [
+//   { Name: "Mathew", Score: 100, isActive: true},
+//   { Name: "Charlie", Score: 65, isActive: false},
+//   { Name: "Chuck", Score: 90, isActive: true}
+//   ]
+
 // Hint: declare a variable above the return, set its value using an if/else,
 //       then embed that variable in your JSX.
 //
 // Write PlayerCard here:
-
+function PlayerCard(props){
+  if (props.isActive === true)  {
+    document.querySelector('#status').textContent = "Status: Active";
+  }
+  else{ 
+   document.querySelector('#status').textContent = "Status: Inactive";
+  }
+  return (
+    <div>
+      <h3>Name: {props.name}</h3>
+        <p>Score: {props.score}</p> 
+        <p id = 'status' >Status:{props.isActive}</p>
+    </div>
+  )
+}
 
 
 function SectionB() {
@@ -112,7 +142,9 @@ function SectionB() {
     <div>
       <h2>Section B — Props with Different Types</h2>
       {/* Render your PlayerCard components here */}
-
+      <PlayerCard name={"Mathew"} score={100} isActive={true}/>
+      <PlayerCard name={"Chuck"} score={65} isActive={false}/>
+      <PlayerCard name={"Leroy"} score={90} isActive={true}/>
     </div>
   )
 }

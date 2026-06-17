@@ -30,7 +30,9 @@ function SectionA() {
   // Declare a variable called myName and assign it your first name as a string.
   // Declare a variable called myCity and assign it the city you are from.
 
-
+  const myName = "Mathew" ;
+  const myCity = "The Bronx";
+  
   // A2.
   // Inside the return below, add a <p> tag that displays your name.
   // Add a second <p> tag that displays your city.
@@ -41,18 +43,21 @@ function SectionA() {
   //      React treats the text literally and prints the
   //      variable name instead of its value.
 
+  
 
   // A3.
   // Using your myName variable, display your name in all uppercase inside a <p> tag.
   // The text should update automatically if you change your name — do not hardcode it.
 
+  
   // A4.
   // Display the number of characters in your name inside a <p> tag.
 
   // A5.
   // Declare a variable and assign it the result of 25 + 17.
   // Add a <p> tag that shows both the expression and the computed value on the same line.
-  //
+  
+  const num = 25 + 17;
   // EXPLAIN: What is JSX? How is it different from plain HTML?
   //          Why do you need curly braces to embed a variable's value?
   //
@@ -62,7 +67,8 @@ function SectionA() {
     <div>
       <h2>Section A — JSX Basics</h2>
       {/* Your output goes below this line */}
-
+        <p>My name is {myName.toUpperCase()} and I am from {myCity}</p>
+        <p>25 + 17 = {num}</p>
     </div>
   )
 }
@@ -86,13 +92,32 @@ function SectionA() {
 //     (href="#" is fine — we are not building real links yet)
 //
 // Write PageHeader here:
+function PageHeader(){
 
-
+return(
+  <header>
+    <h1>My React App</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+)
+}
 // B2.
 // Create a component called PageFooter.
 // It should return a <footer> element with a <p> that says "2026 TTP".
 //
 // Write PageFooter here:
+
+function PageFooter(){
+  return(
+    <footer>
+      <p>2026 TTP</p>
+    </footer>
+  )
+}
 
 
 function SectionB() {
@@ -111,7 +136,10 @@ function SectionB() {
     <div>
       <h2>Section B — Your Own Components</h2>
       {/* Render your components below */}
-
+      <div>
+        <PageHeader/>
+        <PageFooter/>
+      </div>
     </div>
   )
 }

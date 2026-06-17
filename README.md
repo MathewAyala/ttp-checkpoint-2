@@ -26,7 +26,7 @@ Do not copy/paste any snippets. Please write your solutions out completely — t
 | Part 1 | `src/Part1_Components.jsx` | JSX syntax and writing your own components |
 | Part 2 | `src/Part2_Props.jsx` | Passing data into components using props |
 | Part 3 | `src/Part3_Lists.jsx` | Rendering lists from arrays with .map() and .filter() |
-| Part 4 | `src/Part4_State.jsx` | useState, event handlers, and conditional rendering |
+| Part 4 | `src/Part4_State.jsx` | useState, event handlers, conditional rendering, callback props, forms, and array state |
 
 Read the instructions inside each file — they are written as comments.
 
@@ -41,7 +41,7 @@ ttp-checkpoint-2/
     Part1_Components.jsx  ← Work here first  (JSX and components)
     Part2_Props.jsx       ← Work here second (props)
     Part3_Lists.jsx       ← Work here third  (rendering lists)
-    Part4_State.jsx       ← Work here last   (state, events, conditional rendering)
+    Part4_State.jsx       ← Work here last   (state, events, conditional rendering, callback props, forms, array state)
   index.html
   package.json
 ```

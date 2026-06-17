@@ -43,7 +43,7 @@ function SectionA() {
   // A2.
   // Now go back and update the StudentBadge component so it accepts props
   // and displays the name and grade dynamically instead of hardcoded text.
-  // Remember: props is a keyword passed to all components!
+  // Remember: every component receives a single object, conventionally named props.
 
   // Then pass a different name and grade to each of your three StudentBadge components.
   // Each one should now show different data.

@@ -90,7 +90,62 @@ function SectionA() {
 
 
 // ------------------------------------------------------------
-// SECTION B — Controlled Inputs
+// SECTION B — One Variable, Many Buttons
+//
+// Why we learn this:
+//   In Section A, every click changed count by the same fixed amount.
+//   But state can hold more than numbers, and more than one button
+//   can update the very same state variable — each one setting it
+//   to something different. That idea is the missing piece before
+//   we get to inputs in the next section.
+// ------------------------------------------------------------
+
+function MoodPicker() {
+  // B1.
+  // Declare a state variable called mood with an initial value of your choice
+  // (a string, like "neutral").
+
+  // B2.
+  // Add three buttons: "Happy", "Sad", and "Excited".
+  // Each button needs its own click handler that sets mood to that
+  // button's word — clicking "Sad" should set mood to "sad", and so on.
+  //
+  // Why: All three buttons update the same state variable, just with
+  //      a different value each time.
+
+  // B3.
+  // Below the buttons, display a sentence that includes the current mood,
+  // for example "Current mood: happy".
+  //
+  // Test it: click each button and watch the sentence change.
+  //
+  // EXPLAIN: How can three different buttons all update the same state variable?
+  //          What is actually different between this component and Counter?
+  //
+  //          answer:
+
+  return (
+    <div>
+      {/* B2: three buttons go here */}
+
+      {/* B3: mood display goes here */}
+
+    </div>
+  )
+}
+
+function SectionB() {
+  return (
+    <div>
+      <h2>Section B — One Variable, Many Buttons</h2>
+      <MoodPicker />
+    </div>
+  )
+}
+
+
+// ------------------------------------------------------------
+// SECTION C — Controlled Inputs
 //
 // Why we learn this:
 //   A controlled input means the value displayed in the input box
@@ -101,10 +156,10 @@ function SectionA() {
 // ------------------------------------------------------------
 
 function NameInput() {
-  // B1.
+  // C1.
   // Declare a state variable called inputValue. Choose an appropriate initial value.
 
-  // B2.
+  // C2.
   // Add an input element.
   // Wire it up so that every keystroke updates the state variable.
   // The input's displayed value should always come from state — not from the browser.
@@ -112,7 +167,7 @@ function NameInput() {
   // Why: The browser's event object gives you access to whatever is currently
   //      typed in the input. You use that to update state on every change.
 
-  // B3.
+  // C3.
   // Below the input, add a paragraph that displays what is currently in the state variable.
   // It should update in real time as you type.
   //
@@ -125,18 +180,18 @@ function NameInput() {
 
   return (
     <div>
-      {/* B2: input goes here */}
+      {/* C2: input goes here */}
 
-      {/* B3: display text goes here */}
+      {/* C3: display text goes here */}
 
     </div>
   )
 }
 
-function SectionB() {
+function SectionC() {
   return (
     <div>
-      <h2>Section B — Controlled Inputs</h2>
+      <h2>Section C — Controlled Inputs</h2>
       <NameInput />
     </div>
   )
@@ -144,7 +199,7 @@ function SectionB() {
 
 
 // ------------------------------------------------------------
-// SECTION C — Conditional Rendering
+// SECTION D — Conditional Rendering
 //
 // Why we learn this:
 //   Not everything should appear on the screen at all times.
@@ -154,24 +209,26 @@ function SectionB() {
 // ------------------------------------------------------------
 
 function Toggle() {
-  // C1.
+  // D1.
   // Declare a state variable called isVisible with an initial value of false.
 
-  // C2.
+  // D2.
   // Add a button that toggles isVisible between true and false when clicked.
   // The button label should change based on the current state —
   // one label when the content is visible, a different label when it is not.
   //
   // Hint: you can use a variable above the return to decide what the label should be.
 
-  // C3.
+  // D3.
   // Below the button, render a paragraph that says "Now you see me!" —
   // but only when isVisible is true. Use the && operator to do this.
   //
   // Test it: clicking the button should show and hide the message.
 
-  // C4.
-  // Replace C3 with a ternary instead of &&.
+  // D4.
+  // Replace D3 with a ternary instead of &&.
+  // ternary structure: 
+  // -> condition ? if condition is true : if condition is false
   // When isVisible is false, show a paragraph that says "I am hidden." instead.
   // A ternary has three parts: a condition, a value if true, and a value if false.
   //
@@ -183,19 +240,209 @@ function Toggle() {
 
   return (
     <div>
-      {/* C2: button goes here */}
+      {/* D2: button goes here */}
 
-      {/* C3 / C4: conditional message goes here */}
-      
+      {/* D3 / D4: conditional message goes here */}
+
     </div>
   )
 }
 
-function SectionC() {
+function SectionD() {
   return (
     <div>
-      <h2>Section C — Conditional Rendering</h2>
+      <h2>Section D — Conditional Rendering</h2>
       <Toggle />
+    </div>
+  )
+}
+
+
+// ------------------------------------------------------------
+// SECTION E — Callback Props
+//
+// Why we learn this:
+//   Props can carry more than text and numbers — they can carry a
+//   function. This is how a child component tells its parent that
+//   something happened, without the child needing any state of its own.
+//   Data flows down through props; events flow back up through a
+//   function passed down the same way.
+// ------------------------------------------------------------
+
+function LightSwitchButton(/* E3: accept a prop here */) {
+  // E3.
+  // This component should accept one prop — a function.
+  // Render a single button. When clicked, it should call that function.
+  // Do not declare any state in this component — it doesn't need any.
+
+  return (
+    <div>
+      {/* E3: button goes here */}
+
+    </div>
+  )
+}
+
+function LightSwitch() {
+  // E1.
+  // Declare a state variable called isOn with an initial value of false.
+
+  // E2.
+  // Write a function that flips isOn to the opposite value.
+
+  // E4.
+  // Render LightSwitchButton below, passing your flip function from E2
+  // to it as a prop.
+
+  // E5.
+  // Display a sentence showing whether the light is currently on or off.
+  //
+  // Test it: click the button. The sentence in LightSwitch should update,
+  // even though the click happened inside LightSwitchButton.
+  //
+  // EXPLAIN: How is passing a function as a prop similar to passing a string
+  //          or number as a prop? What's different about it?
+  //          Why doesn't LightSwitchButton need its own state to make this work?
+  //
+  //          answer:
+
+  return (
+    <div>
+      {/* E5: on/off sentence goes here */}
+
+      {/* E4: LightSwitchButton goes here */}
+
+    </div>
+  )
+}
+
+function SectionE() {
+  return (
+    <div>
+      <h2>Section E — Callback Props</h2>
+      <LightSwitch />
+    </div>
+  )
+}
+
+
+// ------------------------------------------------------------
+// SECTION F — Forms and preventDefault
+//
+// Why we learn this:
+//   By default, submitting a form reloads the entire page — which would
+//   wipe out any React state you've built up. Every React form needs to
+//   stop that default behavior before doing anything else.
+// ------------------------------------------------------------
+
+function GreetingForm() {
+  // F1.
+  // Declare a state variable called nameInput, starting as an empty string.
+  // Declare a second state variable called greeting, starting as an empty string.
+
+  // F2.
+  // Add a <form> containing a controlled text input wired to nameInput,
+  // and a submit button.
+
+  // F3.
+  // Write a function that runs when the form is submitted. It should:
+  //   - Call preventDefault() on the event object, as the very first line
+  //   - Set greeting to a message that includes whatever was in nameInput
+  //     (for example, "Hello, Sam!")
+  //
+  // Why: preventDefault() stops the browser's default reload-the-page
+  //      behavior, so your state survives the submit.
+
+  // F4.
+  // Wire your function from F3 to the form's submit event.
+
+  // F5.
+  // Below the form, display greeting. It should be blank until the form
+  // has been submitted at least once.
+  //
+  // Test it: type a name and submit. The page should not reload, and the
+  // greeting should appear below the form.
+  //
+  // EXPLAIN: What happens if you submit a form without calling preventDefault()?
+  //          Why does that matter for a component that holds state?
+  //
+  //          answer:
+
+  return (
+    <div>
+      {/* F2: form goes here */}
+
+      {/* F5: greeting goes here */}
+
+    </div>
+  )
+}
+
+function SectionF() {
+  return (
+    <div>
+      <h2>Section F — Forms and preventDefault</h2>
+      <GreetingForm />
+    </div>
+  )
+}
+
+
+// ------------------------------------------------------------
+// SECTION G — Adding and Removing from Array State
+//
+// Why we learn this:
+//   Arrays in state work the same way as any other state — you cannot
+//   change them directly. array.push() and array.splice() modify the
+//   existing array in place, which React won't notice. Instead, you create
+//   a brand new array using tools like the spread operator (...) and
+//   array.filter().
+// ------------------------------------------------------------
+
+function SnackList() {
+  // G1.
+  // Declare a state variable called snacks, an array starting with two
+  // or three snack name strings of your choice.
+
+  // G2.
+  // Add a button labeled "Add Pretzels". When clicked, it should add the
+  // string "Pretzels" to the snacks array — without mutating the original
+  // array. Look into the spread operator for this.
+
+  // G3.
+  // Display each snack using .map(). Each one needs a key, and its own
+  // "Remove" button that removes just that snack from the array.
+  //
+  // Hint: array.filter() lets you build a new array that excludes one
+  //       specific item.
+
+  // G4.
+  // If snacks is empty, display "No snacks left." instead of the list.
+  //
+  // Test it: click "Add Pretzels" a couple of times, then remove snacks
+  // one by one until the empty message appears.
+  //
+  // EXPLAIN: Why can't you use array.push() or array.splice() directly on
+  //          state? What do the spread operator and .filter() let you do
+  //          instead?
+  //
+  //          answer:
+
+  return (
+    <div>
+      {/* G2: Add Pretzels button goes here */}
+
+      {/* G3 / G4: snack list or empty message goes here */}
+
+    </div>
+  )
+}
+
+function SectionG() {
+  return (
+    <div>
+      <h2>Section G — Array State</h2>
+      <SnackList />
     </div>
   )
 }
@@ -215,6 +462,14 @@ function Part4() {
       <SectionB />
       <hr />
       <SectionC />
+      <hr />
+      <SectionD />
+      <hr />
+      <SectionE />
+      <hr />
+      <SectionF />
+      <hr />
+      <SectionG />
     </section>
   )
 }

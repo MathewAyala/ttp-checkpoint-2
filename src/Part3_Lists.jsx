@@ -3,7 +3,7 @@
 //
 // How to verify your work:
 //   Make sure "npm run dev" is still running.
-//   Save this file and check the "Part 3 — Rending Lists" section in the browser.
+//   Save this file and check the "Part 3 — Rendering Lists" section in the browser.
 //   You should see list items appear on the page as you complete each task.
 //
 // Instructions:
